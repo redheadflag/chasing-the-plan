@@ -1,0 +1,1467 @@
+@baseUrl = http://localhost:8000
+
+### Seed muscle groups + exercises from the sample workbook.
+### Idempotent: re-running skips anything already present.
+POST {{baseUrl}}/api/exercises/bulk
+Content-Type: application/json
+
+{
+  "create_missing_groups": true,
+  "items": [
+    {
+      "muscle_group": "РАЗМИНКА",
+      "name": "THE DEEP SQUAT ROTATION",
+      "url": "https://youtu.be/enThal66tUs"
+    },
+    {
+      "muscle_group": "РАЗМИНКА",
+      "name": "FLOOR BRIDGE REACH STRETCH",
+      "url": "https://youtu.be/vKd-VJ6zpG0"
+    },
+    {
+      "muscle_group": "РАЗМИНКА",
+      "name": "WIDE STANCE HIP SHIFT",
+      "url": "https://youtu.be/1rYYQEziLFg"
+    },
+    {
+      "muscle_group": "РАЗМИНКА",
+      "name": "DIAGONAL TOE TOUCH",
+      "url": "https://youtu.be/ZjV4lDSV-Ss?list=PLTvvhCQ-MZVQM8P74XJ-_L1WPYfbLAL0Q"
+    },
+    {
+      "muscle_group": "РАЗМИНКА",
+      "name": "QUAD STRETCH",
+      "url": "https://youtu.be/OyDRyX8ltvc?list=PL0mFJG9hk0xe3hXHM0gVWGuzP_FSu9Pr_"
+    },
+    {
+      "muscle_group": "РАЗМИНКА",
+      "name": "DEEP SQUAT HIP AND ANKLE OPENER",
+      "url": "https://youtu.be/Az6Nq4G47rs"
+    },
+    {
+      "muscle_group": "РАЗМИНКА",
+      "name": "THREAD THE NEEDLE STRETCH",
+      "url": "https://youtu.be/e58hR6qiYkk"
+    },
+    {
+      "muscle_group": "РАЗМИНКА",
+      "name": "BIRD DOG",
+      "url": "https://youtu.be/3uR6mmd1YAE"
+    },
+    {
+      "muscle_group": "РАЗМИНКА",
+      "name": "CHILDS POSE TO FROGGER",
+      "url": "https://youtu.be/lPnUwQkkF1U"
+    },
+    {
+      "muscle_group": "РАЗМИНКА",
+      "name": "SEATED HIP OPENERS WARM UP 90/90",
+      "url": "https://youtu.be/oNKGNAjYrkg"
+    },
+    {
+      "muscle_group": "РАЗМИНКА",
+      "name": "ADDUCTOR LUNGE",
+      "url": "https://youtu.be/m-YmZq-FDjM"
+    },
+    {
+      "muscle_group": "РАЗМИНКА",
+      "name": "LEG SWINGS WARM UP",
+      "url": "https://youtu.be/pNOs9cFdkGU"
+    },
+    {
+      "muscle_group": "РАЗМИНКА",
+      "name": "KNEELING SCAPULAR RETRACTIONS & PROTRACTIONS",
+      "url": "https://youtu.be/B-yKGuAe4yE"
+    },
+    {
+      "muscle_group": "РАЗМИНКА",
+      "name": "KNEELING SCAPULAR ROTATION",
+      "url": "https://youtu.be/PN_BCYu4zkI"
+    },
+    {
+      "muscle_group": "РАЗМИНКА",
+      "name": "THE WORLD'S GREATEST STRETCH",
+      "url": "https://youtu.be/-CiWQ2IvY34"
+    },
+    {
+      "muscle_group": "РАЗМИНКА",
+      "name": "ARM SWINGS WARM UP",
+      "url": "https://youtu.be/StEb2CX9oQU"
+    },
+    {
+      "muscle_group": "РАЗМИНКА",
+      "name": "ALTERNATING ARM SWINGS",
+      "url": "https://youtu.be/oEnHVm9LFIo?list=PLTvvhCQ-MZVQM8P74XJ-_L1WPYfbLAL0Q"
+    },
+    {
+      "muscle_group": "РАЗМИНКА",
+      "name": "SHOULDER CIRCUMDUCTION WITH RESISTANCE BAND",
+      "url": "https://youtu.be/zszjRn9A5I0?list=PLTvvhCQ-MZVQM8P74XJ-_L1WPYfbLAL0Q"
+    },
+    {
+      "muscle_group": "РАЗМИНКА",
+      "name": "BALL RELEASE ON THE UPPER TRAP",
+      "url": "https://youtu.be/WI9BiLbI0IM"
+    },
+    {
+      "muscle_group": "РАЗМИНКА",
+      "name": "DELTOID MYOFASCIAL RELEASE",
+      "url": "https://youtu.be/ffbDm7hSyjc"
+    },
+    {
+      "muscle_group": "РАЗМИНКА",
+      "name": "MYOFASCIAL RELEASE FOR FOOT",
+      "url": "https://youtu.be/fDUVayuYYtA"
+    },
+    {
+      "muscle_group": "РАЗМИНКА",
+      "name": "QUAD FOAM ROLL",
+      "url": "https://youtu.be/NyN8ZwWRFPU"
+    },
+    {
+      "muscle_group": "РАЗМИНКА",
+      "name": "HAMSTRING FOAM ROLL",
+      "url": "https://youtu.be/2vA2RDdGmF4"
+    },
+    {
+      "muscle_group": "РАЗМИНКА",
+      "name": "CALVES FOAM ROLL",
+      "url": "https://youtu.be/rpVMZziJeY8"
+    },
+    {
+      "muscle_group": "РАЗМИНКА",
+      "name": "ADDUCTORS FOAM ROLL",
+      "url": "https://youtu.be/n5g0rjsTT1k"
+    },
+    {
+      "muscle_group": "РАЗМИНКА",
+      "name": "GLUTE FOAM ROLL",
+      "url": "https://youtu.be/NNrS7ij3u8o"
+    },
+    {
+      "muscle_group": "РАЗМИНКА",
+      "name": "MID-BACK FOAM ROLL",
+      "url": "https://youtu.be/BNKLoFZqFGk"
+    },
+    {
+      "muscle_group": "РАЗМИНКА",
+      "name": "LOWER BACK FOAM ROLL",
+      "url": "https://youtu.be/hVAwIK8HsCU"
+    },
+    {
+      "muscle_group": "РАЗМИНКА",
+      "name": "TRAP FOAM ROLL",
+      "url": "https://youtu.be/YSFpn_YGpGw"
+    },
+    {
+      "muscle_group": "КАРДИО",
+      "name": "AIRBIKE",
+      "url": "https://www.youtube.com/shorts/1K2GIpSd8ws?feature=share"
+    },
+    {
+      "muscle_group": "КАРДИО",
+      "name": "ВЕЛОТРЕНАЖЕР СО СПИНКОЙ",
+      "url": "https://youtu.be/cZtqWQGM-Hw"
+    },
+    {
+      "muscle_group": "КАРДИО",
+      "name": "СТЕПЕР",
+      "url": "https://www.youtube.com/shorts/d57qWqx1Mms"
+    },
+    {
+      "muscle_group": "КАРДИО",
+      "name": "ЭЛЛИПС",
+      "url": "https://www.youtube.com/shorts/Ga-ut1Bj9Gc?feature=share"
+    },
+    {
+      "muscle_group": "БАЗА",
+      "name": "БОЛГАРСКИЕ ВЫПАДЫ",
+      "url": "https://youtu.be/Z1uu0uHYl20"
+    },
+    {
+      "muscle_group": "БАЗА",
+      "name": "MACHINE HIP THRUST",
+      "url": "https://youtu.be/5DYho9ISJLc"
+    },
+    {
+      "muscle_group": "БАЗА",
+      "name": "BARBELL RDL",
+      "url": "https://youtu.be/ggFtGGYobE4"
+    },
+    {
+      "muscle_group": "БАЗА",
+      "name": "ПРИСЕД",
+      "url": "https://www.youtube.com/watch?v=rrJIyZGlK8c&pp=ygUKYmFjayBzcXVhdA%3D%3D"
+    },
+    {
+      "muscle_group": "БАЗА",
+      "name": "SUMO DEADLIFT",
+      "url": "https://youtu.be/TrNEnQ5XCBE"
+    },
+    {
+      "muscle_group": "БАЗА",
+      "name": "ТЯГА КЛАССИКА",
+      "url": "https://youtu.be/TN3DHmd1Fe8"
+    },
+    {
+      "muscle_group": "БАЗА",
+      "name": "TRAP-ГРИФ ТЯГА",
+      "url": "https://www.youtube.com/watch?v=v709aJKv-gM&list=PLyqKj7LwU2RtZnGDmtpyhDdvUHFvVyZnA&index=16"
+    },
+    {
+      "muscle_group": "БАЗА",
+      "name": "HIP THRUST",
+      "url": "https://www.youtube.com/shorts/_i6qpcI1Nw4"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "ARM-OUT SINGLE-ARM DB ROW",
+      "url": "https://youtu.be/1ydRu2K6oHg"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "ASSISTED CHIN-UP",
+      "url": "https://youtu.be/-NagF3rCGpA"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "ASSISTED NORMAL GRIP PULLUP",
+      "url": "https://www.youtube.com/watch?v=8ygapPMYK1I&list=PLyqKj7LwU2RsCtKw3UlE85HYgPM3-xoO1"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "ASSISTED PARALLEL PULLUP",
+      "url": "https://www.youtube.com/watch?v=GdsRZAeeDUc&list=PLyqKj7LwU2RsCtKw3UlE85HYgPM3-xoO1&index=2"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "ASSISTED PULL-UP",
+      "url": "https://youtu.be/iZQNHZuvfUQ"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "ASSISTED UNDERHAND PULLUP",
+      "url": "https://www.youtube.com/watch?v=L4ChTwrXTjc&list=PLyqKj7LwU2RsCtKw3UlE85HYgPM3-xoO1&index=3"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "ASSISTED WIDE GRIP PULLUP",
+      "url": "https://www.youtube.com/watch?v=0tiC6RUZL8Y&list=PLyqKj7LwU2RsCtKw3UlE85HYgPM3-xoO1&index=4"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "BARBELL BENT OVER ROW",
+      "url": "https://www.youtube.com/watch?v=6FZHJGzMFEc&list=PLyqKj7LwU2RsCtKw3UlE85HYgPM3-xoO1&index=5"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "BARBELL FLEXION ROW",
+      "url": "https://www.youtube.com/watch?v=Lt3d1UKq7RQ&list=PLyqKj7LwU2RsCtKw3UlE85HYgPM3-xoO1&index=33"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "CHEST SUPPORTED INCLINE DB ROW",
+      "url": "https://youtu.be/okCWuhxJEvw"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "CHEST-SUPPORTED T-BAR ROW",
+      "url": "https://youtu.be/q8qlHwcuOtc"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "DUAL-HANDLE LAT PULLDOWN",
+      "url": "https://youtu.be/NwQ5Ch5t5Vk"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "DUMBBELL ROW PULLOVERS",
+      "url": "https://www.youtube.com/watch?v=0i8Hw8zawpk"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "HALF-KNEELING 1-ARM LAT PULLDOWN",
+      "url": "https://youtu.be/r8K1Fkch5go"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "HAMMER HIGH ROW",
+      "url": "https://www.youtube.com/watch?v=gg5hwJuv6KI&list=PLyqKj7LwU2RsCtKw3UlE85HYgPM3-xoO1&index=10"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "HAMMER LOW ROW",
+      "url": "https://www.youtube.com/watch?v=opjbouBmUWg&list=PLyqKj7LwU2RsCtKw3UlE85HYgPM3-xoO1&index=11"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "INCLINE DUMBBELL ROW",
+      "url": "https://www.youtube.com/watch?v=tZUYS7X50so&list=PLyqKj7LwU2RsCtKw3UlE85HYgPM3-xoO1&index=12"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "LAT-FOCUSED CABLE ROW",
+      "url": "https://youtu.be/w11Kqjm-ycE"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "MACHINE PULLOVER",
+      "url": "https://www.youtube.com/watch?v=oxpAl14EYyc&list=PLyqKj7LwU2RsCtKw3UlE85HYgPM3-xoO1&index=15"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "NEUTRAL-GRIP PULLUP",
+      "url": "https://youtu.be/b0ypSz63UGo"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "OVERHAND MACHINE ROW",
+      "url": "https://youtu.be/WtokJfvWl-I"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "STRAIGHT-BAR LAT PRAYER",
+      "url": "https://youtu.be/YrcnBlH8XDA"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "SUPER-ROM OVERHAND CABLE ROW",
+      "url": "https://www.youtube.com/watch?v=a7AH8W7dQIw"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "TERES ROWS",
+      "url": "https://www.youtube.com/watch?v=9FA8HD3e9sI"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "WIDE BENT CABLE ROW",
+      "url": "https://www.youtube.com/watch?v=P1cxelaQMy0"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "WIDE GRIP MACHINE PULLDOWN",
+      "url": "https://youtu.be/1vGynj-nJSs"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "WIDE GRIP PULLDOWN",
+      "url": "https://www.youtube.com/watch?v=YCKPD4BSD2E&list=PLyqKj7LwU2RsCtKw3UlE85HYgPM3-xoO1&index=30"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "LAT PULLDOWN",
+      "url": "https://youtu.be/IYXRrYXfVLc"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "TRX ROW",
+      "url": "https://www.youtube.com/watch?v=IEky4NL3LLQ&pp=ygUHdHJ4IHJvdw%3D%3D"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "NEUTRAL GRIP SEATED CABLE ROW",
+      "url": "https://youtu.be/hM7XHxQgvLk"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "LEAN-BACK LAT PULLDOWN",
+      "url": "https://youtu.be/Zjzt4MRbAlc"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "ELBOWS-IN 1-ARM DB ROW",
+      "url": "https://youtu.be/SwloMZs8ZVk"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "ПУЛОВЕР С ГАНТЕЛЬЮ",
+      "url": "https://youtu.be/iaRefVKBH8M"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "ГОРИЗОНТАЛЬНАЯ ТЯГА ШИРОКИМ ХВАТОМ",
+      "url": "https://www.youtube.com/shorts/EkvjRrX2Dzg?feature=share"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "ШРАГИ С ГАНТЕЛЯМИ",
+      "url": "https://youtu.be/moFqLlptX7Q"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "ТЯГА БЛОКА ВНИЗ УЗКИМ ХВАТОМ",
+      "url": "https://youtu.be/7l859qd4E48"
+    },
+    {
+      "muscle_group": "СПИНА",
+      "name": "ПОДТЯГИВАНИЯ",
+      "url": "https://youtu.be/5h_NehuTqe4"
+    },
+    {
+      "muscle_group": "ГРУДЬ",
+      "name": "BARBELL BENCH PRESS",
+      "url": "https://youtu.be/nQL5ieH39sw"
+    },
+    {
+      "muscle_group": "ГРУДЬ",
+      "name": "BOTTOM HALF INCLINE DB PRESS",
+      "url": "https://youtu.be/IWP7b1ux7tM"
+    },
+    {
+      "muscle_group": "ГРУДЬ",
+      "name": "CABLE BENT FLYE",
+      "url": "https://www.youtube.com/watch?v=Cj6P91eFXkM&list=PLyqKj7LwU2RuyZwWCIiDHuFZGN11QW3Ff&index=2"
+    },
+    {
+      "muscle_group": "ГРУДЬ",
+      "name": "CABLE FLYE",
+      "url": "https://www.youtube.com/watch?v=4mfLHnFL0Uw&list=PLyqKj7LwU2RuyZwWCIiDHuFZGN11QW3Ff"
+    },
+    {
+      "muscle_group": "ГРУДЬ",
+      "name": "CABLE UNDERHAND FLYE",
+      "url": "https://www.youtube.com/watch?v=e_8HLu59-to&list=PLyqKj7LwU2RuyZwWCIiDHuFZGN11QW3Ff&index=3"
+    },
+    {
+      "muscle_group": "ГРУДЬ",
+      "name": "DEFICIT PUSHUP",
+      "url": "https://youtu.be/3AZSudcQ1N0"
+    },
+    {
+      "muscle_group": "ГРУДЬ",
+      "name": "DUMBBELL CHEST PRESS",
+      "url": "https://youtu.be/zGXvPjlgVkk"
+    },
+    {
+      "muscle_group": "ГРУДЬ",
+      "name": "FLAT HAMMER MACHINE PRESS",
+      "url": "https://www.youtube.com/watch?v=aV1U_mK3XOs&list=PLyqKj7LwU2RuyZwWCIiDHuFZGN11QW3Ff&index=9"
+    },
+    {
+      "muscle_group": "ГРУДЬ",
+      "name": "HIGH INCLINE DUMBBELL PRESS",
+      "url": "https://www.youtube.com/watch?v=GFYrRBoov3w&list=PLyqKj7LwU2RuyZwWCIiDHuFZGN11QW3Ff&index=11"
+    },
+    {
+      "muscle_group": "ГРУДЬ",
+      "name": "INCLINE DUMBBELL FLYE",
+      "url": "https://www.youtube.com/watch?v=8oR5hBwbIBc&list=PLyqKj7LwU2RuyZwWCIiDHuFZGN11QW3Ff&index=12"
+    },
+    {
+      "muscle_group": "ГРУДЬ",
+      "name": "INCLINE WIDE GRIP BENCH PRESS",
+      "url": "https://www.youtube.com/watch?v=FxQ0XEoFYQk&list=PLyqKj7LwU2RuyZwWCIiDHuFZGN11QW3Ff&index=18"
+    },
+    {
+      "muscle_group": "ГРУДЬ",
+      "name": "LOW INCLINE MACHINE PRESS",
+      "url": "https://youtu.be/JmsY9nSqX9E"
+    },
+    {
+      "muscle_group": "ГРУДЬ",
+      "name": "LOW INCLINE SMITH MACHINE PRESS",
+      "url": "https://youtu.be/2ITgeRy2z2s"
+    },
+    {
+      "muscle_group": "ГРУДЬ",
+      "name": "NARROW PUSHUP",
+      "url": "https://www.youtube.com/watch?v=Lz1aFtuNvEQ&list=PLyqKj7LwU2RuyZwWCIiDHuFZGN11QW3Ff&index=23"
+    },
+    {
+      "muscle_group": "ГРУДЬ",
+      "name": "PEC DECK",
+      "url": "https://youtu.be/CI88L1VNvEs"
+    },
+    {
+      "muscle_group": "ГРУДЬ",
+      "name": "PUSHUP",
+      "url": "https://www.youtube.com/watch?v=mm6_WcoCVTA&list=PLyqKj7LwU2RuyZwWCIiDHuFZGN11QW3Ff&index=26"
+    },
+    {
+      "muscle_group": "ГРУДЬ",
+      "name": "SMITH MACHINE BENCH PRESS",
+      "url": "https://www.youtube.com/watch?v=O5viuEPDXKY&list=PLyqKj7LwU2RuyZwWCIiDHuFZGN11QW3Ff&index=27"
+    },
+    {
+      "muscle_group": "ГРУДЬ",
+      "name": "ЖИМ ЛЁЖА",
+      "url": "https://youtu.be/nQL5ieH39sw"
+    },
+    {
+      "muscle_group": "ГРУДЬ",
+      "name": "ЖИМ ГАНТЕЛЕЙ В НАКЛОНЕ 30°",
+      "url": "https://youtu.be/YmlMsvNGTKA"
+    },
+    {
+      "muscle_group": "ГРУДЬ",
+      "name": "DUMBBELL CHEST FLY",
+      "url": "https://youtu.be/Nhvz9EzdJ4U"
+    },
+    {
+      "muscle_group": "ГРУДЬ",
+      "name": "KNEE PUSH UP",
+      "url": "https://youtu.be/8XQ-okb5NWE"
+    },
+    {
+      "muscle_group": "BENCH PRESS",
+      "name": "PAUSED BARBELL BENCH PRESS",
+      "url": "https://youtu.be/n07EfKK7TvA"
+    },
+    {
+      "muscle_group": "BENCH PRESS",
+      "name": "TEMPO BENCH PRESS",
+      "url": "https://youtu.be/5_3t-CCxBQo"
+    },
+    {
+      "muscle_group": "BENCH PRESS",
+      "name": "BARBELL BENCH PRESS",
+      "url": "https://youtu.be/G_vjVva7olM"
+    },
+    {
+      "muscle_group": "DEADLIFT",
+      "name": "TRAP BAR DEADLIFT",
+      "url": "https://youtu.be/JBMqhrqCDi8"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ",
+      "name": "DB LATERAL RAISE",
+      "url": "https://youtu.be/RyztKrzaMNk"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ",
+      "name": "SEATED DB SHOULDER PRESS",
+      "url": "https://youtu.be/B8PB5RPhTWQ"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ",
+      "name": "HIGH CABLE LATERAL RAISE",
+      "url": "https://youtu.be/MnMux3Wc0Ac"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ",
+      "name": "REAR DELT 45° CABLE FLYE",
+      "url": "https://youtu.be/8iXorduqXC8"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ",
+      "name": "SHOULDER PRESS TECHNOGYM",
+      "url": "https://youtu.be/d7yQMvVQaXQ"
+    },
+    {
+      "muscle_group": "ТРИЦЕПС",
+      "name": "TRICEPS PRESSDOWN (BAR)",
+      "url": "https://youtu.be/o4eazahiXQw"
+    },
+    {
+      "muscle_group": "ТРИЦЕПС",
+      "name": "SEATED DB FRENCH PRESS",
+      "url": "https://youtu.be/5KX0EjOTMaI"
+    },
+    {
+      "muscle_group": "БИЦЕПС",
+      "name": "DB CURL",
+      "url": "https://youtu.be/XxGCRSJmgwY"
+    },
+    {
+      "muscle_group": "БИЦЕПС",
+      "name": "HAMMER CURL",
+      "url": "https://youtu.be/xY3sQXYhk7A"
+    },
+    {
+      "muscle_group": "БИЦЕПС",
+      "name": "DB INCLINE CURL",
+      "url": "https://youtu.be/KSJc8bhSjB0"
+    },
+    {
+      "muscle_group": "БИЦЕПС",
+      "name": "EZ BAR CURL",
+      "url": "https://youtu.be/WMrgn4GG7mI"
+    },
+    {
+      "muscle_group": "БИЦЕПС",
+      "name": "DB PREACHER CURL",
+      "url": "https://youtu.be/WTkQLAethtg"
+    },
+    {
+      "muscle_group": "БИЦЕПС",
+      "name": "MACHINE PREACHER CURL",
+      "url": "https://www.youtube.com/watch?v=Ja6ZlIDONac&list=PLyqKj7LwU2Rt1cwOsHwdXa2TiRzjA6uoB&index=15"
+    },
+    {
+      "muscle_group": "ЗАДНЕЕ БЕДРО",
+      "name": "BARBELL RDL",
+      "url": "https://youtu.be/ggFtGGYobE4"
+    },
+    {
+      "muscle_group": "ЗАДНЕЕ БЕДРО",
+      "name": "DB RDL",
+      "url": "https://youtu.be/TZAmthQJkh8"
+    },
+    {
+      "muscle_group": "ЗАДНЕЕ БЕДРО",
+      "name": "LYING LEG CURL",
+      "url": "https://youtu.be/sX4tGtcc62k"
+    },
+    {
+      "muscle_group": "ЗАДНЕЕ БЕДРО",
+      "name": "SEATED LEG CURL",
+      "url": "https://youtu.be/yv0aAY7M1mk"
+    },
+    {
+      "muscle_group": "ЗАДНЕЕ БЕДРО",
+      "name": "HYPEREXTENSION 45°",
+      "url": "https://youtu.be/lEeCPhlFZig"
+    },
+    {
+      "muscle_group": "ПЕРЕДНЕЕ БЕДРО",
+      "name": "DB BULGARIAN SPLIT SQUATS",
+      "url": "https://youtu.be/Z1uu0uHYl20"
+    },
+    {
+      "muscle_group": "ПЕРЕДНЕЕ БЕДРО",
+      "name": "HACK SQUAT",
+      "url": "https://youtu.be/TWUnnDK8rck"
+    },
+    {
+      "muscle_group": "ПЕРЕДНЕЕ БЕДРО",
+      "name": "V-SQUAT MACHINE QUAD FOCUS",
+      "url": "https://youtu.be/5KlSXnQWCXg"
+    },
+    {
+      "muscle_group": "ПЕРЕДНЕЕ БЕДРО",
+      "name": "LEG EXTENSION",
+      "url": "https://youtu.be/uFbNtqP966A"
+    },
+    {
+      "muscle_group": "ПЕРЕДНЕЕ БЕДРО",
+      "name": "LEG PRESS",
+      "url": "https://youtu.be/1yKAQLVV_XI"
+    },
+    {
+      "muscle_group": "ЯГОДИЦЫ",
+      "name": "BARBELL RDL",
+      "url": "https://youtu.be/ggFtGGYobE4"
+    },
+    {
+      "muscle_group": "ЯГОДИЦЫ",
+      "name": "DB BULGARIAN SPLIT SQUATS",
+      "url": "https://youtu.be/Z1uu0uHYl20"
+    },
+    {
+      "muscle_group": "ЯГОДИЦЫ",
+      "name": "V-SQUAT MACHINE GLUTE FOCUS",
+      "url": "https://youtu.be/6waRrmdcN30"
+    },
+    {
+      "muscle_group": "ЯГОДИЦЫ",
+      "name": "MACHINE HIP THRUST",
+      "url": "https://youtu.be/5DYho9ISJLc"
+    },
+    {
+      "muscle_group": "ЯГОДИЦЫ",
+      "name": "WEIGHTED 45 DEGREE HYPEREXTENSION",
+      "url": "https://youtu.be/lEeCPhlFZig"
+    },
+    {
+      "muscle_group": "ЯГОДИЦЫ",
+      "name": "MACHINE HIP ABDUCTION",
+      "url": "https://youtu.be/Jq4YWyLSh_o"
+    },
+    {
+      "muscle_group": "ИКРЫ",
+      "name": "CALF MACHINE",
+      "url": "https://www.youtube.com/watch?v=N3awlEyTY98&list=PLyqKj7LwU2RtQyn5wWMJbD0rCV-cSkiK3"
+    },
+    {
+      "muscle_group": "ИКРЫ",
+      "name": "LEG PRESS CALF PRESS",
+      "url": "https://youtu.be/S6DTPNZ_-F4"
+    },
+    {
+      "muscle_group": "ИКРЫ",
+      "name": "SEATED CALF RAISE",
+      "url": "https://youtu.be/6pfj0G7VKdM"
+    },
+    {
+      "muscle_group": "ИКРЫ",
+      "name": "SINGLE LEG DB CALF RAISE",
+      "url": "https://youtu.be/LNcI8gc2saA"
+    },
+    {
+      "muscle_group": "ИКРЫ",
+      "name": "SMITH MACHINE CALVES",
+      "url": "https://www.youtube.com/watch?v=hh5516HCu4k&list=PLyqKj7LwU2RtQyn5wWMJbD0rCV-cSkiK3&index=4"
+    },
+    {
+      "muscle_group": "ИКРЫ",
+      "name": "STANDING CALF RAISE",
+      "url": "https://youtu.be/6lR2JdxUh7w"
+    },
+    {
+      "muscle_group": "ПРИВОДЯЩИЕ МЫШЦЫ БЕДРА",
+      "name": "CABLE HIP ADDUCTION",
+      "url": "https://youtu.be/6GYTbv-LtV0"
+    },
+    {
+      "muscle_group": "ПРИВОДЯЩИЕ МЫШЦЫ БЕДРА",
+      "name": "COPENHAGEN HIP ADDUCTION",
+      "url": "https://youtu.be/QRLGyl5-i4k"
+    },
+    {
+      "muscle_group": "ПРИВОДЯЩИЕ МЫШЦЫ БЕДРА",
+      "name": "MACHINE HIP ADDUCTION",
+      "url": "https://youtu.be/FMSCZYu1JhE"
+    },
+    {
+      "muscle_group": "КОР",
+      "name": "UNSUPPORTED CRUNCH",
+      "url": "https://www.youtube.com/shorts/56qjdR_phow?feature=share"
+    },
+    {
+      "muscle_group": "КОР",
+      "name": "FOREARM SIDE PLANK HOLD",
+      "url": "https://youtu.be/3oDet5SDxG8"
+    },
+    {
+      "muscle_group": "КОР",
+      "name": "CHINESE PLANK",
+      "url": "https://youtu.be/wqWIOvZH1qc"
+    },
+    {
+      "muscle_group": "КОР",
+      "name": "EXTENDED PLANK HOLD",
+      "url": "https://youtu.be/mhSw_7XUe1Y"
+    },
+    {
+      "muscle_group": "КОР",
+      "name": "СКРУЧИВАНИЯ НА СКАМЬЕ",
+      "url": "https://youtu.be/PhvG-BQgnBU?list=PLz-l7oWFJS0Lyvvb-m0YzEjAmtcezXCki"
+    },
+    {
+      "muscle_group": "КОР",
+      "name": "BICYCLE CRUNCH",
+      "url": "https://youtu.be/eGAwNVhwRug"
+    },
+    {
+      "muscle_group": "КОР",
+      "name": "ПОДЪЁМ НОГ",
+      "url": "https://youtu.be/w86Ph4iQgBM"
+    },
+    {
+      "muscle_group": "КОР",
+      "name": "PLATE-WEIGHTED CRUNCH",
+      "url": "https://youtu.be/mP99WSRI6Bc"
+    },
+    {
+      "muscle_group": "КОР",
+      "name": "AB WHEEL",
+      "url": "https://www.youtube.com/shorts/a-vTvs1K05Y?feature=share"
+    },
+    {
+      "muscle_group": "КОР",
+      "name": "КАСАНИЕ ПАЛЬЦЕВ",
+      "url": "https://youtu.be/M9xe-dKCcn0?list=PLvEr4aGmQrdrdq_smnONRHsXEBOFcKfdh"
+    },
+    {
+      "muscle_group": "КОР",
+      "name": "FLUTTER KICK",
+      "url": "https://youtu.be/ZEjloSZwXqI?list=PLvEr4aGmQrdrdq_smnONRHsXEBOFcKfdh"
+    },
+    {
+      "muscle_group": "КОР",
+      "name": "PLANK WALK UP",
+      "url": "https://youtu.be/slEBHff-810?list=PLvEr4aGmQrdrdq_smnONRHsXEBOFcKfdh"
+    },
+    {
+      "muscle_group": "КОР",
+      "name": "SINGLE ARM FARMER CARRY",
+      "url": "https://youtu.be/iMXKwKzIZ10"
+    },
+    {
+      "muscle_group": "КОР",
+      "name": "SIDE BEND",
+      "url": "https://youtu.be/vWAiW2v7fCs"
+    },
+    {
+      "muscle_group": "CROSSFIT",
+      "name": "STANDING RUSSIAN TWIST",
+      "url": "https://youtu.be/WA0ZEYOOX1M?list=PLvEr4aGmQrdrdq_smnONRHsXEBOFcKfdh"
+    },
+    {
+      "muscle_group": "CROSSFIT",
+      "name": "BULGARIAN SPLIT SQUAT JUMPS",
+      "url": "https://youtu.be/o422UGQXVgs"
+    },
+    {
+      "muscle_group": "CROSSFIT",
+      "name": "PLYO PUSH UP",
+      "url": "https://youtu.be/hDP-oskzYUs?list=PLvEr4aGmQrdrdq_smnONRHsXEBOFcKfdh"
+    },
+    {
+      "muscle_group": "CROSSFIT",
+      "name": "BALL SLAM",
+      "url": "https://youtu.be/iLPGEex-5gI?list=PLvEr4aGmQrdrdq_smnONRHsXEBOFcKfdh"
+    },
+    {
+      "muscle_group": "CROSSFIT",
+      "name": "KETTLEBELL HALO",
+      "url": "https://youtu.be/So7Jr3nutAI"
+    },
+    {
+      "muscle_group": "CROSSFIT",
+      "name": "KETTLEBELL DEADLIFT TO HIGH PULL",
+      "url": "https://youtu.be/uURr96gjSQE"
+    },
+    {
+      "muscle_group": "CROSSFIT",
+      "name": "KETTLEBELL GORILLA ROWS",
+      "url": "https://youtu.be/lHH-wl5phx8"
+    },
+    {
+      "muscle_group": "CROSSFIT",
+      "name": "KETTLEBELL RUSSIAN TWISTS",
+      "url": "https://youtu.be/tBPf4xH7V5s"
+    },
+    {
+      "muscle_group": "CROSSFIT",
+      "name": "KETTLEBELL OVERHEAD SIT UP",
+      "url": "https://youtu.be/vdjWVofU_tk"
+    },
+    {
+      "muscle_group": "CROSSFIT",
+      "name": "KETTLEBELL PLANK PULL THROUGHS",
+      "url": "https://youtu.be/ryO1H3JV5sI"
+    },
+    {
+      "muscle_group": "CROSSFIT",
+      "name": "KETTLEBELL CLEAN AND JERK",
+      "url": "https://youtu.be/8g2CUgbGg6k"
+    },
+    {
+      "muscle_group": "CROSSFIT",
+      "name": "KETTLEBELL JUMP SQUAT",
+      "url": "https://youtu.be/v3prQwHewL0"
+    },
+    {
+      "muscle_group": "CROSSFIT",
+      "name": "KETTLEBELL SWING",
+      "url": "https://youtu.be/YMCISw33xfA"
+    },
+    {
+      "muscle_group": "CROSSFIT",
+      "name": "KETTLEBELL GOBLET SQUAT",
+      "url": "https://youtu.be/9_PLxzIYXPo"
+    },
+    {
+      "muscle_group": "CROSSFIT",
+      "name": "TRX LOW ROW",
+      "url": "https://youtu.be/cXIvgqVu8Fo"
+    },
+    {
+      "muscle_group": "CROSSFIT",
+      "name": "BURPEE BROAD JUMP",
+      "url": "https://youtu.be/YSuzRIVMf-s"
+    },
+    {
+      "muscle_group": "CROSSFIT",
+      "name": "BURPEE",
+      "url": "https://youtu.be/Doe0qx8mm2U?list=PLvEr4aGmQrdrdq_smnONRHsXEBOFcKfdh"
+    },
+    {
+      "muscle_group": "CROSSFIT",
+      "name": "WALKING LUNGE",
+      "url": "https://youtu.be/ubb3cXTU9bo"
+    },
+    {
+      "muscle_group": "CROSSFIT",
+      "name": "OVERHEAD PLATE LUNGE",
+      "url": "https://youtu.be/kWW-plJw0dk"
+    },
+    {
+      "muscle_group": "CROSSFIT",
+      "name": "TURKISH GETUP",
+      "url": "https://youtu.be/X1uuvsVyIfs"
+    },
+    {
+      "muscle_group": "CROSSFIT",
+      "name": "THE DUMBBELL THRUSTER",
+      "url": "https://youtu.be/u3wKkZjE8QM?list=PLdWvFCOAvyr3EWQhtfcEMd3DVM5sJdPL4"
+    },
+    {
+      "muscle_group": "CROSSFIT",
+      "name": "DUMBBELL CLEAN AND PRESS",
+      "url": "https://youtu.be/Dt7Aqrxd-PA?list=PLvEr4aGmQrdrdq_smnONRHsXEBOFcKfdh"
+    },
+    {
+      "muscle_group": "CROSSFIT",
+      "name": "CURL TO PRESS",
+      "url": "https://youtu.be/szIcP0eaxvE"
+    },
+    {
+      "muscle_group": "CROSSFIT",
+      "name": "THE BOX STEP-UP",
+      "url": "https://youtu.be/5qjqDHOUh-A?list=PLdWvFCOAvyr3EWQhtfcEMd3DVM5sJdPL4"
+    },
+    {
+      "muscle_group": "CROSSFIT",
+      "name": "BOX JUMP",
+      "url": "https://youtu.be/slFEwcyQlmg?list=PLvEr4aGmQrdrdq_smnONRHsXEBOFcKfdh"
+    },
+    {
+      "muscle_group": "CROSSFIT",
+      "name": "JUMP SQUAT",
+      "url": "https://youtu.be/4UhdGDwDbBM?list=PLvEr4aGmQrdrdq_smnONRHsXEBOFcKfdh"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "90/90 COPENHAGENS BRINGING",
+      "url": "https://www.youtube.com/shorts/O2ywQZYhGJs?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "ADDUCTOR ROCK BACKS",
+      "url": "https://www.youtube.com/shorts/5ixTBk_C2ow?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "ANKLE MOBILITY",
+      "url": "https://www.youtube.com/shorts/57CLrLRfhnw?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "BAND STRETCHES",
+      "url": "https://www.youtube.com/shorts/wg-Xzd7v7lM?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "COPENHAGEN HIP DROPS",
+      "url": "https://www.youtube.com/shorts/H96-zNzwsDs?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "COSSACK SQUAT",
+      "url": "https://www.youtube.com/shorts/gxsxBSaxAn0?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "ELEVATED PIGEON",
+      "url": "https://www.youtube.com/shorts/zSF6-IcRhiI?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "FACING WALL ROTATIONS",
+      "url": "https://www.youtube.com/shorts/I9auR0qc2KA?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "GLUTE MOBILIZATION",
+      "url": "https://www.youtube.com/shorts/yUUdBIMudas?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "HANGING GLUTE BRIDGES",
+      "url": "https://www.youtube.com/shorts/t2LcxV17eoc?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "HIP EXTERNAL ROTATORS",
+      "url": "https://www.youtube.com/shorts/qbyfcAnzL18?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "HIP FLEXOR LIFT",
+      "url": "https://www.youtube.com/shorts/sjf7v8fPoVQ?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "HIP FLEXOR STRETCH",
+      "url": "https://www.youtube.com/shorts/Y6c-GzkPq80?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "HIP FLEXORS/QUADS MOBILITY",
+      "url": "https://www.youtube.com/shorts/gu12kM-syDw?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "HIP HIKES",
+      "url": "https://www.youtube.com/shorts/DQmHpalY3t4?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "HIP INTERNAL ROTATORS",
+      "url": "https://www.youtube.com/shorts/_rbIyttOSuA?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "HIPS/UPPER BACK MOBILITY",
+      "url": "https://www.youtube.com/shorts/7vJByeUhrjc?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "HURDLER TO LUNGE",
+      "url": "https://www.youtube.com/shorts/SnpSsHtEXB0?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "INCLINE KETTLEBELL HIP FLEXOR REACH",
+      "url": "https://www.youtube.com/shorts/tR3N1yg2QaM?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "IR FOCUSED PAUSES FROM A BACK LAYING",
+      "url": "https://www.youtube.com/shorts/FSw70t0kVrE?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "LANDLINE SWAYS",
+      "url": "https://www.youtube.com/shorts/VFrpPYBGrE0?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "LATERAL DROP INS",
+      "url": "https://www.youtube.com/shorts/PNpI127As7Q?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "LATERAL SQUAT",
+      "url": "https://www.youtube.com/shorts/AC-_Xv4GDzo?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "LOADED HIP AIRPLANE",
+      "url": "https://www.youtube.com/shorts/yxlbBeQoLFo?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "LOADED HIP FLEXOR REACH",
+      "url": "https://www.youtube.com/shorts/Pufo3LBm-8U?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "LOADED LATERAL SQUATS",
+      "url": "https://www.youtube.com/shorts/E95hr34A_kA?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "LUNGE MATRIX",
+      "url": "https://www.youtube.com/shorts/IGSISKX0vco?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "LUNGE SPINE ROTATION",
+      "url": "https://www.youtube.com/shorts/lkgUPFZiIYc?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "MED BALL CHOP",
+      "url": "https://www.youtube.com/shorts/WQYI7XF-eqw?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "PIGEONS",
+      "url": "https://www.youtube.com/shorts/vaCkXczvH4g?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "SEATED IR HOLDS",
+      "url": "https://www.youtube.com/shorts/BJO_0mT4Zm8?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "SEATED ROTATIONS",
+      "url": "https://www.youtube.com/shorts/5h_9KzPtC98?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "SHALOW STEP BACK",
+      "url": "https://www.youtube.com/shorts/zQGzaMiypXs?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "SHIN BOX ROTATIONS",
+      "url": "https://www.youtube.com/shorts/aBXIqbTXo9o?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "SINGLE HINGE TO HIP FLEXION",
+      "url": "https://www.youtube.com/shorts/ARa4qi8ZAJs?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "SINGLE LEG FALL BACKS",
+      "url": "https://www.youtube.com/shorts/wip_t1NgVSg?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "SINGLE LEG HINGE TO HIP FLEXOR REACH",
+      "url": "https://www.youtube.com/shorts/gHrQ3lcqMHw?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "SPIDERMAN LUNGE",
+      "url": "https://www.youtube.com/shorts/eg91XpMFc7Q?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "SPIDERMAN QUAD STRETCH",
+      "url": "https://www.youtube.com/shorts/h_HRP6vC-Qs?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "STEP OUTS WITH BANDED PULL IN",
+      "url": "https://www.youtube.com/shorts/c5vYSNFgrTs?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "SUPPORTED LEG WHIPS",
+      "url": "https://www.youtube.com/shorts/LxyiPgVsEFY?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "TOTAL HIP MOBILITY",
+      "url": "https://www.youtube.com/shorts/hwJmZ_FqxaU?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "HAMSTRING TO HIP PRY",
+      "url": "https://youtu.be/1saw69Mem-g?list=PLR0R0AHJb2ZA1eJEEqLBQPhwA8xhrLIzc"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "FROG ROCK BACKS",
+      "url": "https://youtu.be/L2vKhjZKoNg?list=PLR0R0AHJb2ZA1eJEEqLBQPhwA8xhrLIzc"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "T-SPINE ROTATION FROM A SQUAT",
+      "url": "https://youtu.be/Qg4jaT1gg_s?list=PLR0R0AHJb2ZACooPg-4rXKuLOdVyeAj21"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "HAMSTRING TO HIP REACH",
+      "url": "https://youtu.be/u6qWLtUoK_w?list=PLR0R0AHJb2ZA1eJEEqLBQPhwA8xhrLIzc"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "WINDMILL",
+      "url": "https://youtu.be/_BXRpnT74o4?list=PLR0R0AHJb2ZACooPg-4rXKuLOdVyeAj21"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "HORSE STANCE GOOD MORNING",
+      "url": "https://youtu.be/2A8Gh8N6WFQ?list=PLR0R0AHJb2ZA1eJEEqLBQPhwA8xhrLIzc"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "COSSACK SWITCHES",
+      "url": "https://youtu.be/CI95FekEF98?list=PLR0R0AHJb2ZA1eJEEqLBQPhwA8xhrLIzc"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "BANDED JOINT MOBILIZATION FOR THE HIP",
+      "url": "https://youtu.be/99pb0NnE4Kw"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "DEEP SQUAT STRETCH",
+      "url": "https://www.youtube.com/shorts/gZEAT-kwGNY?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "KETTLEBELL WEIGHT SHIFT",
+      "url": "https://www.youtube.com/shorts/dnnGVqTb7-A?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "SINGLE LEG SQUAT WARM UP",
+      "url": "https://www.youtube.com/shorts/tLaeqPy0U0o?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "THE DEEP SQUAT ROTATION",
+      "url": "https://youtu.be/enThal66tUs"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "THE WORLD'S GREATEST STRETCH",
+      "url": "https://youtu.be/-CiWQ2IvY34"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "90 90 STRETCH",
+      "url": "https://www.youtube.com/shorts/XEpflj-TVqE?feature=share"
+    },
+    {
+      "muscle_group": "НОГИ, ТАЗ",
+      "name": "HIP AIRPLANE",
+      "url": "https://www.youtube.com/shorts/URY-escJjss?feature=share"
+    },
+    {
+      "muscle_group": "ПОЗВОНОЧНИК",
+      "name": "CABLE T-SPINE ROTATI",
+      "url": null
+    },
+    {
+      "muscle_group": "ПОЗВОНОЧНИК",
+      "name": "HIPS/UPPER BACK MOBILITY",
+      "url": "https://www.youtube.com/shorts/7vJByeUhrjc?feature=share"
+    },
+    {
+      "muscle_group": "ПОЗВОНОЧНИК",
+      "name": "LUNGE SPINE ROTATION",
+      "url": "https://www.youtube.com/shorts/lkgUPFZiIYc?feature=share"
+    },
+    {
+      "muscle_group": "ПОЗВОНОЧНИК",
+      "name": "SPLIT STANCE BANDED T-SPINE ROTATIONS",
+      "url": "https://www.youtube.com/shorts/9rrGQ5qwnOE?feature=share"
+    },
+    {
+      "muscle_group": "ПОЗВОНОЧНИК",
+      "name": "THORACIC TWIST",
+      "url": "https://www.youtube.com/shorts/VLQFfrJE-A4?feature=share"
+    },
+    {
+      "muscle_group": "ПОЗВОНОЧНИК",
+      "name": "THREAD THE NEEDLE",
+      "url": "https://www.youtube.com/shorts/TB4mRW1DgQ0?feature=share"
+    },
+    {
+      "muscle_group": "ПОЗВОНОЧНИК",
+      "name": "T-SPINE ROLLING ARMBAR",
+      "url": "https://www.youtube.com/shorts/IZpGki478CU?feature=share"
+    },
+    {
+      "muscle_group": "ПОЗВОНОЧНИК",
+      "name": "UPPER BACK & SHOULDERS MOBILITY",
+      "url": "https://www.youtube.com/shorts/DbOtQokmruM?feature=share"
+    },
+    {
+      "muscle_group": "ПОЗВОНОЧНИК",
+      "name": "WIDE STRADDLE SPINE ROTATION",
+      "url": "https://www.youtube.com/shorts/EjhRNUyXdO8?feature=share"
+    },
+    {
+      "muscle_group": "ПОЗВОНОЧНИК",
+      "name": "T-SPINE ROTATION FROM A SQUAT",
+      "url": "https://youtu.be/Qg4jaT1gg_s?list=PLR0R0AHJb2ZACooPg-4rXKuLOdVyeAj21"
+    },
+    {
+      "muscle_group": "ПОЗВОНОЧНИК",
+      "name": "T-SPINE ROTATIONS FROM A SINGLE LEG HINGE",
+      "url": "https://youtu.be/pJPwQ2Zom2E?list=PLR0R0AHJb2ZACooPg-4rXKuLOdVyeAj21"
+    },
+    {
+      "muscle_group": "ПОЗВОНОЧНИК",
+      "name": "KNEELING T-SPINE ROTATIONS",
+      "url": "https://youtu.be/9jfeyu3m2ns?list=PLR0R0AHJb2ZACooPg-4rXKuLOdVyeAj21"
+    },
+    {
+      "muscle_group": "ПОЗВОНОЧНИК",
+      "name": "WINDMILL",
+      "url": "https://youtu.be/_BXRpnT74o4?list=PLR0R0AHJb2ZACooPg-4rXKuLOdVyeAj21"
+    },
+    {
+      "muscle_group": "ПОЗВОНОЧНИК",
+      "name": "PELVIC CLOCK",
+      "url": "https://www.youtube.com/shorts/bsjty8uYl-U?feature=share"
+    },
+    {
+      "muscle_group": "ПОЗВОНОЧНИК",
+      "name": "PELVIC HEALTH EDUCATION BRIDGE EXERCISE",
+      "url": "https://youtu.be/7NOGZGBusWQ"
+    },
+    {
+      "muscle_group": "ПОЗВОНОЧНИК",
+      "name": "THE DEEP SQUAT ROTATION",
+      "url": "https://youtu.be/enThal66tUs"
+    },
+    {
+      "muscle_group": "ПОЗВОНОЧНИК",
+      "name": "CAT CAMEL",
+      "url": "https://youtu.be/c2kKOjpzK14?si=a_5BYdR1hY20n-Cb"
+    },
+    {
+      "muscle_group": "ПОЗВОНОЧНИК",
+      "name": "РАЗМИНКА",
+      "url": "https://youtu.be/tFpwBr_7KPg"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "BAND PULL APART",
+      "url": "https://www.youtube.com/shorts/uAkoc3AZnjs?feature=share"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "DB EXTERNAL ROTATION",
+      "url": null
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "SCAP RETRACTION",
+      "url": "https://www.youtube.com/shorts/jtvQ4OET3yo?feature=share"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "BAND SHOULDER ROTATION",
+      "url": "https://www.youtube.com/shorts/UB81a6Srlls?feature=share"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "BAND EXTERNAL/INTERNAL ROTATION",
+      "url": "https://www.youtube.com/shorts/RKzslrHMeRc?feature=share"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "ROTATION WITH EXTENSION",
+      "url": "https://www.youtube.com/shorts/D5_RFoYD9Hw?feature=share"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "BAND PULL TO PRESS",
+      "url": "https://www.youtube.com/shorts/-KLA7axnTL0?feature=share"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "BOTTOMS UP KETTLEBELL PRESS",
+      "url": "https://www.youtube.com/shorts/Jye9fYV_4tY?feature=share"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "BOTTOMS-UP KETTLEBELL CARRY",
+      "url": "https://www.youtube.com/shorts/gfxcZ2kb6tc?feature=share"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "BANDED ROTATION",
+      "url": "https://www.youtube.com/shorts/p2diJ-XO7A8?feature=share"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "POWELL RAISE",
+      "url": "https://www.youtube.com/shorts/8ieJ5KsC9cQ?feature=share"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "ROLLING ARMBAR",
+      "url": "https://www.youtube.com/shorts/UhHFTE4FqK8?feature=share"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "SUPPORTED REVERSE FLY",
+      "url": "https://www.youtube.com/shorts/ylV0TFGRX0Y?feature=share"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "W PULL TO EXTENDED Y LOWER",
+      "url": "https://www.youtube.com/shorts/FwhJ8rz3ytY?feature=share"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "FACEPULLS WITH EXTERNAL ROTATION",
+      "url": "https://www.youtube.com/shorts/7hdi0yqeJHY?feature=share"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "SHOULDER AIRPLANES",
+      "url": "https://www.youtube.com/shorts/gFeu6dRzDSI?feature=share"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "ROTATING TOE TAP",
+      "url": "https://www.youtube.com/shorts/ePVAEcP8cCg?feature=share"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "SHOULDER STABILITY/MOBILITY",
+      "url": "https://www.youtube.com/shorts/Hw9KYrwWk4Y?feature=share"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "WIDE STRADDLE SPINE ROTATION",
+      "url": "https://www.youtube.com/shorts/EjhRNUyXdO8?feature=share"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "ROCKING EXTERNAL ROTATION",
+      "url": "https://www.youtube.com/shorts/uckofWsyRlg?feature=share"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "WEIGHTED PRONE BUTTERFLIES",
+      "url": "https://www.youtube.com/shorts/YEBQkpZa1_4?feature=share"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "DB SNATCH",
+      "url": "https://youtu.be/YVLazjEzoUE?list=PLR0R0AHJb2ZC99eeY2BW7EGuTqPWhfOO-"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "RESPONSIVE PERTURBATION",
+      "url": "https://youtu.be/fSM39FNDLUU?list=PLR0R0AHJb2ZC99eeY2BW7EGuTqPWhfOO-"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "SEATED SHOULDER EXTENSION",
+      "url": "https://youtu.be/EKozqM8MvRM?list=PLR0R0AHJb2ZC99eeY2BW7EGuTqPWhfOO-"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "WINDMILL",
+      "url": "https://youtu.be/_BXRpnT74o4?list=PLR0R0AHJb2ZACooPg-4rXKuLOdVyeAj21"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "CHILDS POSE WITH FOAM ROLLER",
+      "url": "https://youtu.be/av-_TGtDmFM"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "EXTERNAL ROTATION PRESS",
+      "url": "https://youtu.be/NIK0aJDO7Pk"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "EXTERNAL ROTATION WITH BAND",
+      "url": "https://www.youtube.com/shorts/1p9yXAl2T58?feature=share"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "KETTLEBELL SHOULDER STABILITY",
+      "url": "https://www.youtube.com/shorts/WfZBXH3KnPY?feature=share"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "ROTATOR CUFF EXERCISE",
+      "url": "https://www.youtube.com/shorts/aUigOgxfqZg?feature=share"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "SHOULDER ROTATIONS",
+      "url": "https://youtu.be/xUvq9R9EzZg?si=udts_BYXL9S34jJ7"
+    },
+    {
+      "muscle_group": "ПЛЕЧИ, ПРЕДПЛЕЧЬЯ",
+      "name": "THE SHOULDER BIG 3",
+      "url": "https://youtu.be/zFY49O7n9AA?si=yNZ8T-BPkrWix2pF"
+    },
+    {
+      "muscle_group": "Стопы",
+      "name": "BANDED JOINT MOBILIZATIONS FOR ANKLES",
+      "url": "https://youtu.be/ILSbK8RnGdI"
+    },
+    {
+      "muscle_group": "Стопы",
+      "name": "DEEP SQUAT STRETCH",
+      "url": "https://www.youtube.com/shorts/gZEAT-kwGNY?feature=share"
+    },
+    {
+      "muscle_group": "Стопы",
+      "name": "SINGLE LEG SQUAT WARM UP",
+      "url": "https://www.youtube.com/shorts/tLaeqPy0U0o?feature=share"
+    }
+  ]
+}

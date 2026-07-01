@@ -1,0 +1,28 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: ctp-postgres
+    environment:
+      POSTGRES_USER: ctp
+      POSTGRES_PASSWORD: ctp
+      POSTGRES_DB: chasing_the_plan
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ctp -d chasing_the_plan"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  adminer:
+    image: adminer:4
+    container_name: ctp-adminer
+    ports:
+      - "8081:8080"
+    depends_on:
+      - postgres
+
+volumes:
+  pgdata:
