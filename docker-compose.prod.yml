@@ -1,0 +1,43 @@
+# Production stack: postgres (persistent volume) + backend (FastAPI/uvicorn).
+# The frontend is NOT containerised here — build the SPA (`cd frontend && npm run build`)
+# and serve dist/ from your own host nginx, which also reverse-proxies /api to the backend
+# and terminates TLS. See deploy/nginx.example.conf.
+#
+#   cp .env.prod.example .env.prod   # then edit secrets
+#   docker compose --env-file .env.prod -f docker-compose.prod.yml up -d --build
+#
+# The backend is published on localhost only (127.0.0.1) so host nginx can proxy to it
+# while it stays off the public internet.
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-ctp}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env.prod}
+      POSTGRES_DB: ${POSTGRES_DB:-chasing_the_plan}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-ctp} -d ${POSTGRES_DB:-chasing_the_plan}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  backend:
+    build: .
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-ctp}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-chasing_the_plan}
+      # Same-origin when host nginx serves the SPA and proxies /api under one domain,
+      # so this can stay empty. Set it only if the SPA is served from a different origin.
+      CORS_ORIGINS: ${CORS_ORIGINS:-}
+    ports:
+      # Expose to the host (localhost only) for the host's nginx to reverse-proxy.
+      - "127.0.0.1:${BACKEND_PORT:-8000}:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  pgdata:

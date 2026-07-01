@@ -109,6 +109,45 @@ uv run pytest
 Covers CRUD, bulk-import idempotency, nested workout create/replace, validation rules,
 and that both report formats download with the right content and hyperlinks.
 
+## Deployment (self-hosted)
+
+**Backend + database run in Docker; the frontend is served by your own host nginx (with TLS).**
+Postgres uses a persistent `pgdata` volume, and the backend applies migrations automatically on
+startup (`docker-entrypoint.sh` → `alembic upgrade head`), with the Cyrillic PDF font bundled in
+the image. The backend is published on `127.0.0.1` only, so nginx proxies to it while it stays
+off the public internet.
+
+**1. Backend + Postgres:**
+```bash
+cp .env.prod.example .env.prod          # set POSTGRES_PASSWORD (and BACKEND_PORT if not 8000)
+docker compose --env-file .env.prod -f docker-compose.prod.yml up -d --build
+```
+The API is now on `127.0.0.1:8000`.
+
+**2. Frontend (built once, served by nginx):**
+```bash
+cd frontend && npm ci && npm run build   # -> frontend/dist
+sudo cp -r dist/* /var/www/chasing-the-plan/
+```
+The SPA calls a relative `/api`, so it needs no per-domain rebuild.
+
+**3. nginx (HTTP first):** base your site on [`deploy/nginx.example.conf`](deploy/nginx.example.conf)
+(HTTP-only; serves `dist/` and proxies `/api` → `127.0.0.1:8000`). Set `server_name`/`root`,
+symlink it into `sites-enabled`, then `sudo nginx -t && sudo systemctl reload nginx`.
+
+**4. HTTPS later:** `sudo certbot --nginx -d your.domain` — certbot edits the block to add the
+TLS server and the HTTP→HTTPS redirect automatically.
+
+Since nginx serves the SPA and proxies `/api` under one domain, it's **same-origin — no CORS**.
+
+**Operations:**
+- **Seed** the catalog once (optional): `sed -n '/^{/,$p' seed/exercises.http | curl -s -X POST https://your.domain/api/exercises/bulk -H 'Content-Type: application/json' -d @-`
+- **Updates** — `git pull && docker compose --env-file .env.prod -f docker-compose.prod.yml up -d --build` (migrations re-run); rebuild the frontend and recopy `dist/`.
+- **Backups** — `docker exec <postgres-container> pg_dump -U ctp chasing_the_plan > backup.sql`.
+
+Files: `Dockerfile` + `docker-entrypoint.sh` (backend), `docker-compose.prod.yml`,
+`.env.prod.example`, `deploy/nginx.example.conf`.
+
 ## Project structure
 
 ```
