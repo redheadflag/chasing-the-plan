@@ -27,7 +27,7 @@ export default function ExercisesPage() {
 
   return (
     <div>
-      <div className="mb-5 flex items-center justify-between">
+      <div className="mb-5 flex flex-wrap items-center justify-between gap-2">
         <h1 className="text-2xl font-bold">Упражнения</h1>
         <div className="flex gap-2">
           <Button variant="secondary" onClick={() => setShowGroups(true)}>
@@ -63,13 +63,13 @@ export default function ExercisesPage() {
       {exercisesQ.isLoading ? (
         <Spinner />
       ) : (
-        <div className="overflow-hidden rounded-lg border border-slate-200 bg-white">
+        <div className="overflow-x-auto rounded-lg border border-slate-200 bg-white">
           <table className="w-full text-sm">
             <thead className="bg-slate-50 text-left text-slate-500">
               <tr>
                 <th className="px-4 py-2 font-medium">Название</th>
                 <th className="px-4 py-2 font-medium">Группа мышц</th>
-                <th className="px-4 py-2 font-medium">Ссылка</th>
+                <th className="hidden px-4 py-2 font-medium sm:table-cell">Ссылка</th>
                 <th className="px-4 py-2" />
               </tr>
             </thead>
@@ -80,7 +80,7 @@ export default function ExercisesPage() {
                   <td className="px-4 py-2">
                     <Badge color="indigo">{ex.muscle_group?.name ?? "—"}</Badge>
                   </td>
-                  <td className="max-w-xs truncate px-4 py-2 text-slate-500">
+                  <td className="hidden max-w-xs truncate px-4 py-2 text-slate-500 sm:table-cell">
                     {ex.url ? (
                       <a
                         href={ex.url}
