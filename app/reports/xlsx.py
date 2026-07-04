@@ -130,11 +130,12 @@ def render_xlsx(doc: PlanDoc) -> bytes:
                     r += 1
         r += 1  # spacer between days
 
-    ws.cell(
-        row=r,
-        column=1,
-        value="Зелёным цветом выделены упражнения, которые нужно снять на видео.",
-    ).font = LEGEND_FONT
+    if any(row.highlight for day in doc.days for row in day.rows):
+        ws.cell(
+            row=r,
+            column=1,
+            value="Зелёным цветом выделены упражнения, которые нужно снять на видео.",
+        ).font = LEGEND_FONT
 
     ws.column_dimensions["A"].width = 22
     ws.column_dimensions["B"].width = 34

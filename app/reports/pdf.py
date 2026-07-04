@@ -227,12 +227,13 @@ def render_pdf(doc: PlanDoc) -> bytes:
                     flow.append(Paragraph(escape(line), st["notes_body"]))
         flow.append(Spacer(1, 16))
 
-    flow.append(
-        Paragraph(
-            "Зелёным цветом выделены упражнения, которые нужно снять на видео.",
-            st["legend"],
+    if any(row.highlight for day in doc.days for row in day.rows):
+        flow.append(
+            Paragraph(
+                "Зелёным цветом выделены упражнения, которые нужно снять на видео.",
+                st["legend"],
+            )
         )
-    )
 
     # Size the page height to the content so there is no trailing white space.
     content_h = 0.0
