@@ -178,11 +178,15 @@ def render_pdf(doc: PlanDoc) -> bytes:
             ("LEFTPADDING", (note_col, 0), (note_col, -1), 14),
         ]
 
+        # Superset blocks get a black rule immediately before and after them.
+        # Two adjacent supersets share the boundary rule (no doubled line).
+        line_rows: set[int] = set()
         for band in _group_bands(day.rows):
+            start = len(data)
             for i, row in enumerate(band):
                 is_first = i == 0
                 cells: list = [
-                    Paragraph(escape(row.muscle_group), st["muscle"]) if is_first else "",
+                    Paragraph(escape(row.muscle_group), st["muscle"]),
                     _exercise_para(row, st["exercise"]),
                 ]
                 for s in range(n):
@@ -197,6 +201,18 @@ def render_pdf(doc: PlanDoc) -> bytes:
                     note_text = f"{note_text}<br/>{bn}" if note_text else bn
                 cells.append(Paragraph(note_text, st["note"]))
                 data.append(cells)
+            if band[0].is_superset:
+                line_rows.add(start)      # rule before the superset
+                line_rows.add(len(data))  # rule after the superset
+
+        n_rows = len(data)
+        for k in line_rows:
+            if k >= n_rows:
+                style_cmds.append(
+                    ("LINEBELOW", (0, n_rows - 1), (-1, n_rows - 1), 0.75, CLR_BLACK)
+                )
+            else:
+                style_cmds.append(("LINEABOVE", (0, k), (-1, k), 0.75, CLR_BLACK))
 
         if data:
             flow.append(

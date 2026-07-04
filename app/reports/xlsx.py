@@ -3,7 +3,7 @@ from __future__ import annotations
 import io
 
 from openpyxl import Workbook
-from openpyxl.styles import Alignment, Font
+from openpyxl.styles import Alignment, Border, Font, Side
 from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.page import PageMargins
 from openpyxl.worksheet.properties import PageSetupProperties
@@ -32,6 +32,8 @@ LEGEND_FONT = Font(name="Calibri", size=9, color=GREEN)
 WRAP_TOP = Alignment(wrap_text=True, vertical="top")
 STAGE_ALIGN = Alignment(wrap_text=True, vertical="center", horizontal="center")
 NOTE_ALIGN = Alignment(wrap_text=True, vertical="top", indent=1)
+
+THIN_BLACK = Side(style="thin", color=BLACK)
 
 
 def _group_bands(rows: list[PlanRow]) -> list[list[PlanRow]]:
@@ -74,13 +76,16 @@ def render_xlsx(doc: PlanDoc) -> bytes:
         ws.cell(row=r, column=1, value=day.title).font = DAY_FONT
         r += 1
 
+        # Superset blocks get a black rule immediately before and after them.
+        # Two adjacent supersets share the boundary rule (no doubled line).
+        line_rows: set[int] = set()
         for band in _group_bands(day.rows):
+            start_r = r
             for i, row in enumerate(band):
                 is_first = i == 0
-                if is_first:
-                    mg = ws.cell(row=r, column=1, value=row.muscle_group)
-                    mg.font = MUSCLE_FONT
-                    mg.alignment = WRAP_TOP
+                mg = ws.cell(row=r, column=1, value=row.muscle_group)
+                mg.font = MUSCLE_FONT
+                mg.alignment = WRAP_TOP
 
                 ex = ws.cell(row=r, column=2, value=row.exercise_name)
                 ex.font = EX_GREEN if row.highlight else EX_BLUE
@@ -107,6 +112,13 @@ def render_xlsx(doc: PlanDoc) -> bytes:
 
                 ws.row_dimensions[r].height = 30
                 r += 1
+            if band[0].is_superset:
+                line_rows.add(start_r)  # rule before the superset
+                line_rows.add(r)        # rule after the superset (top of next row)
+
+        for rr in line_rows:
+            for c in range(1, total_cols + 1):
+                ws.cell(row=rr, column=c).border = Border(top=THIN_BLACK)
 
         if day.notes:
             r += 1
