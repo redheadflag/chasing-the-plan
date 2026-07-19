@@ -58,7 +58,7 @@ def list_workouts_for_athlete(db: Session, athlete_id: int) -> list[Workout]:
     stmt = (
         select(Workout)
         .where(Workout.athlete_id == athlete_id)
-        .order_by(Workout.week, Workout.position, Workout.id)
+        .order_by(Workout.week.desc(), Workout.position, Workout.id)
     )
     return list(db.scalars(stmt))
 
@@ -75,7 +75,7 @@ def get_athlete_plan(db: Session, athlete_id: int) -> list[Workout]:
     stmt = (
         select(Workout)
         .where(Workout.athlete_id == athlete_id)
-        .order_by(Workout.week, Workout.position, Workout.id)
+        .order_by(Workout.week.desc(), Workout.position, Workout.id)
         .options(*_workout_loaders())
     )
     return list(db.scalars(stmt))

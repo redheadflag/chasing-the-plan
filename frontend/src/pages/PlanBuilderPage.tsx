@@ -128,7 +128,7 @@ function toPayload(draft: Draft, athleteId: number): WorkoutCreate {
   };
 }
 
-/** Group workouts into week sections, ordered by ascending week number. */
+/** Group workouts into week sections, ordered by descending week number. */
 function groupByWeek(
   ws: WorkoutSummary[],
 ): { week: number; items: WorkoutSummary[] }[] {
@@ -139,7 +139,7 @@ function groupByWeek(
     else map.set(w.week, [w]);
   }
   return [...map.keys()]
-    .sort((a, b) => a - b)
+    .sort((a, b) => b - a)
     .map((week) => ({ week, items: map.get(week)! }));
 }
 

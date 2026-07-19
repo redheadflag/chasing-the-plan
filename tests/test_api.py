@@ -179,9 +179,9 @@ def test_workout_week_roundtrip_and_ordering(client: TestClient, sample_catalog)
     p2.pop("week", None)
     assert client.post("/api/workouts", json=p2).json()["week"] == 1
 
-    # athlete's workouts come back ordered by week
+    # athlete's workouts come back ordered by descending week
     summary = client.get(f"/api/athletes/{a['id']}/workouts").json()
-    assert [s["week"] for s in summary] == [1, 5]
+    assert [s["week"] for s in summary] == [5, 1]
 
 
 def test_single_block_must_have_one_unit(client: TestClient, sample_catalog):
