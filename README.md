@@ -96,8 +96,13 @@ Build for production with `npm run build` (output in `frontend/dist/`).
 - `GET /api/athletes/{id}/plan.xlsx`
 
 Both return an attachment (`Content-Disposition`) so the browser downloads the file.
-Optional `?days=WED&days=FRI` filters to specific days. The **Plan builder** page has
-**Download PDF / XLSX** buttons wired to these.
+Optional filters (combinable): `?week=2` for a single week, `?days=WED&days=FRI` for
+specific days, or `?workout_id=…` for one day. The **Plan builder** page groups days by
+week and has **Download PDF / XLSX** buttons for the whole plan, per week, and per day.
+
+Each workout (training day) carries a `week` number (default `1`); a plan is just its
+days spread across weeks. A whole-plan export spanning more than one week is split with
+«Неделя N» section headers, while a single-week or single-day export stays flat.
 
 ## Tests
 

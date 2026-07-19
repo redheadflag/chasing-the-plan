@@ -23,6 +23,9 @@ class Workout(TimestampMixin, Base):
         ForeignKey("athlete.id", ondelete="CASCADE"), index=True
     )
     name: Mapped[str] = mapped_column(String(200))
+    week: Mapped[int] = mapped_column(
+        Integer, default=1, server_default="1", index=True
+    )
     day_of_week: Mapped[DayOfWeek] = mapped_column(
         SAEnum(DayOfWeek, name="day_of_week")
     )

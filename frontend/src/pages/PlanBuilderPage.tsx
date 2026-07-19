@@ -20,6 +20,7 @@ import {
   type WorkoutCreate,
   type WorkoutKind,
   type WorkoutOut,
+  type WorkoutSummary,
 } from "../api/types";
 import { Combobox } from "../components/Combobox";
 import { Badge, Button, ErrorBox, Field, Select, Spinner, TextArea, TextInput } from "../components/ui";
@@ -45,6 +46,7 @@ interface DraftBlock {
 }
 interface Draft {
   name: string;
+  week: number;
   day_of_week: DayOfWeek;
   kind: WorkoutKind;
   notes: string;
@@ -68,6 +70,7 @@ const newUnit = (): DraftUnit => ({
 function fromWorkout(w: WorkoutOut): Draft {
   return {
     name: w.name,
+    week: w.week,
     day_of_week: w.day_of_week,
     kind: w.kind,
     notes: w.notes ?? "",
@@ -94,6 +97,7 @@ function toPayload(draft: Draft, athleteId: number): WorkoutCreate {
   return {
     athlete_id: athleteId,
     name: draft.name.trim(),
+    week: draft.week,
     day_of_week: draft.day_of_week,
     kind: draft.kind,
     position: 0,
@@ -124,6 +128,21 @@ function toPayload(draft: Draft, athleteId: number): WorkoutCreate {
   };
 }
 
+/** Group workouts into week sections, ordered by ascending week number. */
+function groupByWeek(
+  ws: WorkoutSummary[],
+): { week: number; items: WorkoutSummary[] }[] {
+  const map = new Map<number, WorkoutSummary[]>();
+  for (const w of ws) {
+    const arr = map.get(w.week);
+    if (arr) arr.push(w);
+    else map.set(w.week, [w]);
+  }
+  return [...map.keys()]
+    .sort((a, b) => a - b)
+    .map((week) => ({ week, items: map.get(week)! }));
+}
+
 export default function PlanBuilderPage() {
   const athletesQ = useAthletes();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -140,7 +159,14 @@ export default function PlanBuilderPage() {
   }, [athletesQ.data, athleteId]);
 
   const workoutsQ = useAthleteWorkouts(athleteId);
-  const [editing, setEditing] = useState<number | "new" | null>(null);
+  // `id: null` => creating a new day; `week` seeds the week for a new day.
+  const [editing, setEditing] = useState<{ id: number | null; week: number } | null>(
+    null,
+  );
+
+  const workouts = workoutsQ.data ?? [];
+  const weekGroups = groupByWeek(workouts);
+  const nextWeek = workouts.length ? Math.max(...workouts.map((w) => w.week)) : 1;
 
   return (
     <div>
@@ -174,13 +200,16 @@ export default function PlanBuilderPage() {
       ) : editing != null ? (
         <WorkoutEditor
           athleteId={athleteId}
-          workoutId={editing === "new" ? null : editing}
+          workoutId={editing.id}
+          defaultWeek={editing.week}
           onDone={() => setEditing(null)}
         />
       ) : (
         <div>
           <div className="mb-4 flex flex-wrap gap-2">
-            <Button onClick={() => setEditing("new")}>+ Тренировка (день)</Button>
+            <Button onClick={() => setEditing({ id: null, week: nextWeek })}>
+              + Тренировка (день)
+            </Button>
             <a href={reportUrl(athleteId, "pdf")}>
               <Button variant="secondary">⬇ Весь план: PDF</Button>
             </a>
@@ -192,45 +221,69 @@ export default function PlanBuilderPage() {
           <ErrorBox error={workoutsQ.error} />
           {workoutsQ.isLoading ? (
             <Spinner />
+          ) : workouts.length === 0 ? (
+            <div className="rounded-lg border border-dashed border-slate-300 p-8 text-center text-slate-400">
+              Ещё нет тренировок. Добавьте первый день.
+            </div>
           ) : (
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {workoutsQ.data?.map((w) => (
-                <div
-                  key={w.id}
-                  className="flex flex-col rounded-lg border border-slate-200 bg-white p-4"
-                >
-                  <button onClick={() => setEditing(w.id)} className="text-left">
-                    <div className="flex items-center justify-between">
-                      <span className="font-semibold">{DAY_LABELS[w.day_of_week]}</span>
-                      <Badge color={w.kind === "SUPERSET_BASED" ? "amber" : "indigo"}>
-                        {w.kind === "SUPERSET_BASED" ? "суперсеты" : "обычная"}
-                      </Badge>
-                    </div>
-                    <div className="mt-1 text-slate-600 hover:text-indigo-600">
-                      {w.name} <span className="text-xs text-slate-400">— изменить</span>
-                    </div>
-                  </button>
-                  <div className="mt-3 flex gap-2 border-t border-slate-100 pt-3">
-                    <a
-                      href={reportUrl(athleteId, "pdf", { workoutId: w.id })}
-                      className="rounded border border-slate-300 px-2 py-1 text-xs font-medium text-slate-600 hover:bg-slate-50"
-                    >
-                      ⬇ PDF
+            <div className="space-y-6">
+              {weekGroups.map(({ week, items }) => (
+                <section key={week}>
+                  <div className="mb-2 flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                    <h2 className="text-lg font-bold">Неделя {week}</h2>
+                    <a href={reportUrl(athleteId, "pdf", { week })}>
+                      <Button variant="secondary">⬇ Неделя: PDF</Button>
                     </a>
-                    <a
-                      href={reportUrl(athleteId, "xlsx", { workoutId: w.id })}
-                      className="rounded border border-slate-300 px-2 py-1 text-xs font-medium text-slate-600 hover:bg-slate-50"
-                    >
-                      ⬇ XLSX
+                    <a href={reportUrl(athleteId, "xlsx", { week })}>
+                      <Button variant="secondary">⬇ Неделя: XLSX</Button>
                     </a>
+                    <Button
+                      variant="ghost"
+                      className="ml-auto"
+                      onClick={() => setEditing({ id: null, week })}
+                    >
+                      + день в эту неделю
+                    </Button>
                   </div>
-                </div>
+                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                    {items.map((w) => (
+                      <div
+                        key={w.id}
+                        className="flex flex-col rounded-lg border border-slate-200 bg-white p-4"
+                      >
+                        <button
+                          onClick={() => setEditing({ id: w.id, week: w.week })}
+                          className="text-left"
+                        >
+                          <div className="flex items-center justify-between">
+                            <span className="font-semibold">{DAY_LABELS[w.day_of_week]}</span>
+                            <Badge color={w.kind === "SUPERSET_BASED" ? "amber" : "indigo"}>
+                              {w.kind === "SUPERSET_BASED" ? "суперсеты" : "обычная"}
+                            </Badge>
+                          </div>
+                          <div className="mt-1 text-slate-600 hover:text-indigo-600">
+                            {w.name} <span className="text-xs text-slate-400">— изменить</span>
+                          </div>
+                        </button>
+                        <div className="mt-3 flex gap-2 border-t border-slate-100 pt-3">
+                          <a
+                            href={reportUrl(athleteId, "pdf", { workoutId: w.id })}
+                            className="rounded border border-slate-300 px-2 py-1 text-xs font-medium text-slate-600 hover:bg-slate-50"
+                          >
+                            ⬇ PDF
+                          </a>
+                          <a
+                            href={reportUrl(athleteId, "xlsx", { workoutId: w.id })}
+                            className="rounded border border-slate-300 px-2 py-1 text-xs font-medium text-slate-600 hover:bg-slate-50"
+                          >
+                            ⬇ XLSX
+                          </a>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
               ))}
-              {workoutsQ.data?.length === 0 && (
-                <div className="col-span-full rounded-lg border border-dashed border-slate-300 p-8 text-center text-slate-400">
-                  Ещё нет тренировок. Добавьте первый день.
-                </div>
-              )}
             </div>
           )}
         </div>
@@ -244,10 +297,12 @@ export default function PlanBuilderPage() {
 function WorkoutEditor({
   athleteId,
   workoutId,
+  defaultWeek,
   onDone,
 }: {
   athleteId: number;
   workoutId: number | null;
+  defaultWeek: number;
   onDone: () => void;
 }) {
   const exercisesQ = useExercises();
@@ -257,7 +312,7 @@ function WorkoutEditor({
 
   const [draft, setDraft] = useState<Draft | null>(
     workoutId == null
-      ? { name: "", day_of_week: "MON", kind: "ORDINARY", notes: "", blocks: [] }
+      ? { name: "", week: defaultWeek, day_of_week: "MON", kind: "ORDINARY", notes: "", blocks: [] }
       : null,
   );
   const [validationError, setValidationError] = useState<string | null>(null);
@@ -328,12 +383,22 @@ function WorkoutEditor({
       </div>
 
       <div className="rounded-lg border border-slate-200 bg-white p-4">
-        <div className="grid gap-4 sm:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-4">
           <Field label="Название">
             <TextInput
               value={draft.name}
               onChange={(e) => patch((d) => (d.name = e.target.value))}
               placeholder="Напр. Crossfit / Верх"
+            />
+          </Field>
+          <Field label="Неделя">
+            <TextInput
+              type="number"
+              min={1}
+              value={draft.week}
+              onChange={(e) =>
+                patch((d) => (d.week = Math.max(1, Number(e.target.value) || 1)))
+              }
             />
           </Field>
           <Field label="День недели">

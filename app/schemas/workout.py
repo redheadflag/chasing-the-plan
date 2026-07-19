@@ -50,6 +50,7 @@ class WorkoutBlockIn(BaseModel):
 class WorkoutCreate(BaseModel):
     athlete_id: int
     name: str = Field(min_length=1, max_length=200)
+    week: int = Field(default=1, ge=1)
     day_of_week: DayOfWeek
     kind: WorkoutKind = WorkoutKind.ORDINARY
     position: int = 0
@@ -61,6 +62,7 @@ class WorkoutReplace(BaseModel):
     """Full replacement of a workout's contents (athlete stays fixed)."""
 
     name: str = Field(min_length=1, max_length=200)
+    week: int = Field(default=1, ge=1)
     day_of_week: DayOfWeek
     kind: WorkoutKind = WorkoutKind.ORDINARY
     position: int = 0
@@ -113,6 +115,7 @@ class WorkoutOut(BaseModel):
     id: int
     athlete_id: int
     name: str
+    week: int
     day_of_week: DayOfWeek
     kind: WorkoutKind
     position: int
@@ -126,6 +129,7 @@ class WorkoutSummary(BaseModel):
     id: int
     athlete_id: int
     name: str
+    week: int
     day_of_week: DayOfWeek
     kind: WorkoutKind
     position: int

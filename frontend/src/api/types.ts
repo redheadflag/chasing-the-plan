@@ -39,6 +39,7 @@ export interface WorkoutSummary {
   id: number;
   athlete_id: number;
   name: string;
+  week: number;
   day_of_week: DayOfWeek;
   kind: WorkoutKind;
   position: number;
@@ -66,6 +67,7 @@ export interface WorkoutBlockIn {
 export interface WorkoutCreate {
   athlete_id: number;
   name: string;
+  week: number;
   day_of_week: DayOfWeek;
   kind: WorkoutKind;
   position: number;
@@ -104,6 +106,7 @@ export interface WorkoutOut {
   id: number;
   athlete_id: number;
   name: string;
+  week: number;
   day_of_week: DayOfWeek;
   kind: WorkoutKind;
   position: number;

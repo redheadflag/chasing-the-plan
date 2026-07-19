@@ -19,6 +19,7 @@ BLACK = "FF000000"
 
 ATHLETE_FONT = Font(name="Calibri", bold=True, size=12, color=BLACK)
 ATHLETE_NOTE_FONT = Font(name="Calibri", italic=True, size=8, color="FF666666")
+WEEK_FONT = Font(name="Calibri", bold=True, size=13, color=BLACK)
 DAY_FONT = Font(name="Calibri", bold=True, size=11, color=RED)
 MUSCLE_FONT = Font(name="Calibri", bold=True, size=9, color=BLACK)
 EX_BLUE = Font(name="Calibri", bold=True, size=9, color=BLUE)
@@ -71,7 +72,18 @@ def render_xlsx(doc: PlanDoc) -> bytes:
         r += 1
         r += 1  # spacer
 
+    prev_week: int | None = None
     for day in doc.days:
+        if doc.multi_week and day.week != prev_week:
+            if prev_week is not None:
+                r += 1  # spacer before a new week
+            ws.merge_cells(f"A{r}:{last_letter}{r}")
+            ws.cell(row=r, column=1, value=f"Неделя {day.week}").font = WEEK_FONT
+            for c in range(1, total_cols + 1):
+                ws.cell(row=r, column=c).border = Border(bottom=THIN_BLACK)
+            r += 1
+            prev_week = day.week
+
         ws.merge_cells(f"A{r}:{last_letter}{r}")
         ws.cell(row=r, column=1, value=day.title).font = DAY_FONT
         r += 1

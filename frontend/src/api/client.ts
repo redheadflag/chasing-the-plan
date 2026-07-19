@@ -32,10 +32,11 @@ async function req<T>(path: string, opts?: RequestInit): Promise<T> {
 export const reportUrl = (
   athleteId: number,
   ext: "pdf" | "xlsx",
-  opts?: { workoutId?: number; days?: string[] },
+  opts?: { workoutId?: number; days?: string[]; week?: number },
 ) => {
   const params = new URLSearchParams();
   if (opts?.workoutId != null) params.set("workout_id", String(opts.workoutId));
+  if (opts?.week != null) params.set("week", String(opts.week));
   (opts?.days ?? []).forEach((d) => params.append("days", d));
   const qs = params.toString();
   return `${BASE}/api/athletes/${athleteId}/plan.${ext}${qs ? `?${qs}` : ""}`;

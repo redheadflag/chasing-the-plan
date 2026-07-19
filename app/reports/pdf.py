@@ -59,6 +59,9 @@ def _styles() -> dict[str, ParagraphStyle]:
             "athlete_note", fontName=FONT_REGULAR, fontSize=9, leading=12,
             textColor=colors.HexColor("#666666"),
         ),
+        "week": ParagraphStyle(
+            "week", fontName=FONT_BOLD, fontSize=13, leading=16, textColor=CLR_BLACK
+        ),
         "day": ParagraphStyle(
             "day", fontName=FONT_BOLD, fontSize=11, leading=14, textColor=CLR_RED
         ),
@@ -164,7 +167,20 @@ def render_pdf(doc: PlanDoc) -> bytes:
 
     flow: list = []
 
+    prev_week: int | None = None
     for day in doc.days:
+        if doc.multi_week and day.week != prev_week:
+            if prev_week is not None:
+                flow.append(Spacer(1, 6))
+            flow.append(Paragraph(f"Неделя {day.week}", st["week"]))
+            flow.append(
+                HRFlowable(
+                    width="100%", thickness=1, color=CLR_BLACK,
+                    spaceBefore=2, spaceAfter=5,
+                )
+            )
+            prev_week = day.week
+
         flow.append(Paragraph(escape(day.title), st["day"]))
         flow.append(Spacer(1, 3))
 

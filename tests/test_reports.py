@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import io
+from urllib.parse import unquote
 
 import openpyxl
 from fastapi.testclient import TestClient
@@ -8,6 +9,13 @@ from fastapi.testclient import TestClient
 from tests.test_api import _workout_payload
 
 XLSX_MIME = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+
+
+def _xlsx_text(content: bytes) -> str:
+    wb = openpyxl.load_workbook(io.BytesIO(content))
+    return "\n".join(
+        str(c) for row in wb.active.iter_rows(values_only=True) for c in row if c is not None
+    )
 
 
 def _seed_plan(client: TestClient, cat: dict[str, int]) -> int:
@@ -69,6 +77,54 @@ def test_report_omits_athlete_name(client: TestClient, sample_catalog):
     assert "Иван" not in text
     # the day header is still present
     assert "Среда (Crossfit)" in text
+
+
+def _seed_two_weeks(client: TestClient, cat: dict[str, int]) -> int:
+    """Week 1: WED (Crossfit). Week 2: FRI (Верх) + MON (Низ). Returns athlete id."""
+    a = client.post("/api/athletes", json={"name": "Иван", "note": None}).json()
+    client.post("/api/workouts", json=_workout_payload(a["id"], cat)).raise_for_status()
+    for day, name in (("FRI", "Верх"), ("MON", "Низ")):
+        w = _workout_payload(a["id"], cat)
+        w["week"] = 2
+        w["day_of_week"] = day
+        w["name"] = name
+        client.post("/api/workouts", json=w).raise_for_status()
+    return a["id"]
+
+
+def test_report_week_filter(client: TestClient, sample_catalog):
+    aid = _seed_two_weeks(client, sample_catalog)
+
+    # Single-week download: only that week's days, filename names the week, and
+    # (single week) the sheet stays flat — no "Неделя N" separators inside.
+    r = client.get(f"/api/athletes/{aid}/plan.xlsx?week=2")
+    assert r.status_code == 200
+    assert "Неделя 2" in unquote(r.headers["content-disposition"])
+    text = _xlsx_text(r.content)
+    assert "Пятница (Верх)" in text and "Понедельник (Низ)" in text
+    assert "Среда" not in text  # week 1 excluded
+    assert "Неделя" not in text  # single week -> no in-sheet week separators
+
+
+def test_report_combined_has_week_headers(client: TestClient, sample_catalog):
+    aid = _seed_two_weeks(client, sample_catalog)
+
+    # Whole-plan export spans >1 week, so it gets "Неделя N" separators.
+    r = client.get(f"/api/athletes/{aid}/plan.xlsx")
+    assert r.status_code == 200
+    text = _xlsx_text(r.content)
+    assert "Неделя 1" in text
+    assert "Неделя 2" in text
+    assert "Среда (Crossfit)" in text
+    assert "Пятница (Верх)" in text
+
+
+def test_report_week_pdf_downloads(client: TestClient, sample_catalog):
+    aid = _seed_two_weeks(client, sample_catalog)
+    r = client.get(f"/api/athletes/{aid}/plan.pdf?week=1")
+    assert r.status_code == 200
+    assert r.content[:5] == b"%PDF-"
+    assert "Неделя 1" in unquote(r.headers["content-disposition"])
 
 
 def test_report_single_workout_only(client: TestClient, sample_catalog):

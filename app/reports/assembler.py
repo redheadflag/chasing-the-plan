@@ -35,6 +35,7 @@ class DaySection:
     title: str
     rows: list[PlanRow]
     notes: str | None
+    week: int = 1
 
 
 @dataclass
@@ -43,6 +44,9 @@ class PlanDoc:
     athlete_note: str | None
     days: list[DaySection] = field(default_factory=list)
     max_stages: int = 1
+    # True when the document spans more than one week, so renderers add
+    # "Неделя N" separators. A single-week (or single-day) export stays flat.
+    multi_week: bool = False
 
 
 def _stage_cell(entry: PlanExercise) -> StageCell:
@@ -85,8 +89,10 @@ def build_plan_doc(athlete: Athlete, workouts: list[Workout]) -> PlanDoc:
                 title=f"{day_name(workout.day_of_week)} ({workout.name})",
                 rows=rows,
                 notes=workout.notes,
+                week=workout.week,
             )
         )
 
     doc.max_stages = max_stages
+    doc.multi_week = len({w.week for w in workouts}) > 1
     return doc

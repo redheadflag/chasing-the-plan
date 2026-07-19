@@ -157,6 +157,33 @@ def test_workout_nested_create_get_replace_delete(client: TestClient, sample_cat
     assert client.get(f"/api/workouts/{w['id']}").status_code == 404
 
 
+def test_workout_week_roundtrip_and_ordering(client: TestClient, sample_catalog):
+    a = client.post("/api/athletes", json={"name": "Иван", "note": None}).json()
+
+    # week is persisted on create, get, and summary
+    payload = _workout_payload(a["id"], sample_catalog)
+    payload["week"] = 3
+    w = client.post("/api/workouts", json=payload).json()
+    assert w["week"] == 3
+    assert client.get(f"/api/workouts/{w['id']}").json()["week"] == 3
+    assert client.get(f"/api/athletes/{a['id']}/workouts").json()[0]["week"] == 3
+
+    # replace can move a day to another week
+    replace = {k: v for k, v in payload.items() if k != "athlete_id"}
+    replace["week"] = 5
+    assert client.put(f"/api/workouts/{w['id']}", json=replace).json()["week"] == 5
+
+    # omitting week defaults to 1
+    p2 = _workout_payload(a["id"], sample_catalog)
+    p2["day_of_week"] = "MON"
+    p2.pop("week", None)
+    assert client.post("/api/workouts", json=p2).json()["week"] == 1
+
+    # athlete's workouts come back ordered by week
+    summary = client.get(f"/api/athletes/{a['id']}/workouts").json()
+    assert [s["week"] for s in summary] == [1, 5]
+
+
 def test_single_block_must_have_one_unit(client: TestClient, sample_catalog):
     a = client.post("/api/athletes", json={"name": "A", "note": None}).json()
     bad = {
